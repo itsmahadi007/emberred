@@ -416,10 +416,10 @@ const Overworld = (() => {
   async function startMenu() {
     Sfx.select();
     while (true) {
-      const pick = await UI.choose(['PARTY', 'BAG', 'BADGES', 'SAVE', 'EXIT'], {
+      const pick = await UI.choose(['PARTY', 'BAG', 'BADGES', 'SAVE'], {
         style: { right: '12px', top: '12px' },
       });
-      if (pick === -1 || pick === 4) return;
+      if (pick === -1) return;
       if (pick === 0) await partyManage();
       if (pick === 1) await overworldBag();
       if (pick === 2) {

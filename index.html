@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#c81810">
+<title>EMBERRED — A Pokémon-Inspired GBA-Style Adventure</title>
+<meta name="description" content="A Pokémon-inspired, fan-made monster-catching RPG, playable right in your browser. Catch, battle, and earn the Granite Badge. Built with the Claude AI model Fable 5.">
+
+<!-- Link-sharing previews (Open Graph: WhatsApp, Facebook, Discord, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EMBERRED">
+<meta property="og:title" content="EMBERRED — A Pokémon-Inspired GBA-Style Adventure">
+<meta property="og:description" content="A Pokémon-inspired, fan-made monster-catching RPG, playable right in your browser. Catch, battle, and earn the Granite Badge. Built with the Claude AI model Fable 5.">
+<meta property="og:url" content="https://emberred.vercel.app/">
+<meta property="og:image" content="https://emberred.vercel.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EMBERRED — pixel Charizard on a fire-red background">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EMBERRED — A Pokémon-Inspired GBA-Style Adventure">
+<meta name="twitter:description" content="A Pokémon-inspired, fan-made monster-catching RPG, playable right in your browser. Built with the Claude AI model Fable 5.">
+<meta name="twitter:image" content="https://emberred.vercel.app/assets/og-image.png">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="wrap">
+  <div id="screen">
+    <!-- 480x320 internal resolution (game logic uses 240x160 via a 2x transform)
+         so 32px source art renders at native detail -->
+    <canvas id="game" width="480" height="320"></canvas>
+
+    <!-- Battle HUD (info boxes) -->
+    <div id="enemy-box" class="info-box hidden">
+      <div class="ib-row1"><span class="ib-name"></span><span class="ib-lv"></span></div>
+      <div class="ib-row2">
+        <span class="ib-status"></span>
+        <div class="hp-outer"><div class="hp-label">HP</div><div class="hp-track"><div class="hp-fill"></div></div></div>
+      </div>
+      <div class="ib-hpnum"></div>
+      <div class="ib-balls"></div>
+    </div>
+    <div id="player-box" class="info-box hidden">
+      <div class="ib-row1"><span class="ib-name"></span><span class="ib-lv"></span></div>
+      <div class="ib-row2">
+        <span class="ib-status"></span>
+        <div class="hp-outer"><div class="hp-label">HP</div><div class="hp-track"><div class="hp-fill"></div></div></div>
+      </div>
+      <div class="ib-hpnum"></div>
+      <div class="exp-track"><div class="exp-fill"></div></div>
+    </div>
+
+    <!-- Dialog box -->
+    <div id="dialog" class="gba-box hidden">
+      <div id="dialog-text"></div>
+      <div id="dialog-arrow" class="hidden">&#9660;</div>
+    </div>
+
+    <!-- Dynamic menu layer (battle menu, moves, party, bag, shop, etc.) -->
+    <div id="menu-layer"></div>
+
+    <!-- Touch controls: overlaid INSIDE the game, mobile-RPG style -->
+    <div id="touch-controls">
+      <div id="dpad">
+        <button data-k="up" id="tc-up">&#9650;</button>
+        <button data-k="left" id="tc-left">&#9664;</button>
+        <button data-k="right" id="tc-right">&#9654;</button>
+        <button data-k="down" id="tc-down">&#9660;</button>
+      </div>
+      <div id="action-pad">
+        <button data-k="start" id="tc-start">START</button>
+        <button data-k="b" id="tc-b">B</button>
+        <button data-k="a" id="tc-a">A</button>
+      </div>
+    </div>
+
+    <!-- Fade overlay for transitions -->
+    <div id="fade"></div>
+  </div>
+  <div id="hint">Z / SPACE = A &nbsp;&middot;&nbsp; X = B &nbsp;&middot;&nbsp; ENTER = MENU &nbsp;&middot;&nbsp; F = FULLSCREEN &nbsp;&middot;&nbsp; M = SOUND</div>
+</div>
+
+<!-- Portrait blocker for touch devices -->
+<div id="rotate-overlay">
+  <div>
+    <div style="font-size:42px">&#128260;</div>
+    <p>Please rotate your device</p>
+    <p style="font-size:10px;opacity:.7">WILDVALE plays in landscape</p>
+  </div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/data/types.js"></script>
+<script src="js/data/moves.js"></script>
+<script src="js/data/species.js"></script>
+<script src="js/data/sprites.js"></script>
+<script src="js/data/assets.js"></script>
+<script src="js/data/items.js"></script>
+<script src="js/data/maps.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/save.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/overworld.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

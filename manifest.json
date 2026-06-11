@@ -1,0 +1,16 @@
+{
+  "name": "EMBERRED — Pokémon-Inspired GBA-Style Adventure",
+  "short_name": "EMBERRED",
+  "description": "A Pokémon-inspired, fan-made monster-catching RPG in vanilla JS. Built with the Claude AI model Fable 5. Non-commercial fan project.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#6e0c06",
+  "theme_color": "#c81810",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

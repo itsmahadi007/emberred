@@ -1,0 +1,12 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# logs / scratch
+*.log
+.t*.png
+.test-*.png
+
+# deploy
+.vercel

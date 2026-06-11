@@ -39,19 +39,19 @@ function mainLoop(ts) {
   }
 }
 
-// ---------------- title screen (warm fire gradient + Charizard) ----------------
+// ---------------- title screen (teal night sky + drifting embers) ----------------
 function drawTitle(ctx, ts) {
   const t = ts / 1000;
   const W = Game.viewW, CX = W / 2;
   const grad = ctx.createLinearGradient(0, 0, 0, 160);
-  grad.addColorStop(0, '#2a0c08');
-  grad.addColorStop(0.55, '#8a2410');
-  grad.addColorStop(1, '#e87828');
+  grad.addColorStop(0, '#04181c');
+  grad.addColorStop(0.55, '#0a3a44');
+  grad.addColorStop(1, '#145e62');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, W, 160);
 
   // ember motes drifting upward
-  ctx.fillStyle = 'rgba(248,200,72,.8)';
+  ctx.fillStyle = 'rgba(255,156,60,.85)';
   for (let i = 0; i < 18; i++) {
     const ex = (i * 53 + Math.sin(t * 0.7 + i) * 18 + W) % W;
     const ey = 160 - ((t * (14 + i * 3) + i * 37) % 175);
@@ -59,7 +59,7 @@ function drawTitle(ctx, ts) {
   }
 
   // dark ridge silhouette
-  ctx.fillStyle = '#1c0a06';
+  ctx.fillStyle = '#02100f';
   ctx.beginPath();
   ctx.ellipse(CX - 70, 185, 120, 48, 0, Math.PI, 0);
   ctx.ellipse(CX + 80, 192, 130, 55, 0, Math.PI, 0);
@@ -72,13 +72,13 @@ function drawTitle(ctx, ts) {
 
   ctx.textAlign = 'center';
   ctx.font = '20px "Press Start 2P", monospace';
-  ctx.fillStyle = '#5a1004';
+  ctx.fillStyle = '#0c2a30';
   ctx.fillText('EMBERRED', CX + 2, 38);
-  ctx.fillStyle = '#f8a020';
+  ctx.fillStyle = '#ffd84a';
   ctx.fillText('EMBERRED', CX, 35);
-  ctx.fillStyle = '#f8d048';
+  ctx.fillStyle = '#7afcd8';
   ctx.fillText('EMBERRED', CX - 1, 33);
-  ctx.fillStyle = '#f8e8d0';
+  ctx.fillStyle = '#c8ece8';
   ctx.font = '7px "Press Start 2P", monospace';
   ctx.fillText('A FAN-MADE GBA-STYLE ADVENTURE', CX, 52);
   if (Math.floor(t * 1.6) % 2 === 0) {

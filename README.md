@@ -48,7 +48,9 @@ The game is fully playable on phones, in **landscape only**:
 - **Installable PWA**: `manifest.json` (fullscreen display, landscape
   orientation, pixel-Charizard app icon on a fire-red background) plus a
   cache-first service worker, so the deployed game can be added to the
-  home screen and played offline.
+  home screen and played offline. The service worker only registers when
+  the game is the top-level page — iframe embeds (like the portfolio's OS
+  window) skip it.
 
 ## Progression
 

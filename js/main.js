@@ -213,7 +213,9 @@ function setupMobile() {
   });
 
   // PWA: register the service worker (https/installed app only; file:// skips).
-  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  // Skipped when framed (e.g. embedded in the portfolio OS window) — a
+  // cache-first SW on the host origin could serve a one-load-stale game.
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http') && window.self === window.top) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   }
 
